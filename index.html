@@ -3,30 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Developer Portfolio</title>
+    <title>Littu Kurien | VFX Pipeline Developer</title>
     <!-- Font imports -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/gotham">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
     <style>
         :root {
-            --bg-color: #f9f9f9;
+            --bg-color: #ffece4;
             --text-color: #333;
-            --accent-color: #2563eb;
-            --secondary-color: #e0e7ff;
+            --accent-color: rgba(242, 63, 10, 0.8); /* #f23f0a with 80% opacity */
+            --secondary-color: rgba(242, 63, 10, 0.2); /* Lighter version for backgrounds */
             --card-bg: #ffffff;
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #111827;
-                --text-color: #f3f4f6;
-                --accent-color: #3b82f6;
-                --secondary-color: #1e3a8a;
-                --card-bg: #1f2937;
-                --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            }
         }
 
         * {
@@ -63,15 +52,12 @@
             font-family: 'Gotham', sans-serif;
             font-weight: 700;
             letter-spacing: -0.5px;
+            color: var(--accent-color);
         }
 
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
 
         h2 {
@@ -92,7 +78,7 @@
             margin-bottom: 2rem;
         }
 
-        .about-section, .projects-section {
+        .about-section, .projects-section, .experience-section, .skills-section {
             padding: 5rem 2rem;
         }
 
@@ -185,6 +171,11 @@
             color: var(--accent-color);
         }
 
+        .contact i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
         .scroll-down {
             position: absolute;
             bottom: 2rem;
@@ -206,6 +197,64 @@
             }
         }
 
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            margin-top: 2rem;
+        }
+
+        .timeline-item {
+            border-left: 2px solid var(--accent-color);
+            padding-left: 1.5rem;
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            left: -7px;
+            top: 6px;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .timeline-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-company {
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -214,6 +263,11 @@
             h2 {
                 font-size: 1.75rem;
             }
+
+            .contact {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -221,12 +275,17 @@
     <header>
         <div class="container">
             <h1>Littu Kurien</h1>
-            <div class="role">VFX Pipeline Python Developer</div>
-            <p>I build elegant solutions to complex problems using Python and modern frameworks.</p>
+            <div class="role">VFX Pipeline Developer & Supervisor</div>
+            <p>With 15+ years of experience in VFX pipeline development, I build robust systems that bridge technical requirements with artistic vision.</p>
             <div class="contact">
-                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="https://linkedin.com/littukurien" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/littukurien/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="mailto:littu.kurien@gmail.com">
+                    <i class="fas fa-envelope"></i>
+                    <span>littu.kurien@gmail.com</span>
+                </a>
             </div>
         </div>
         <div class="scroll-down">
@@ -239,14 +298,97 @@
             <h2>About Me</h2>
             <div class="card">
                 <p>
-                    I'm a passionate Python developer with 5+ years of experience building scalable web applications and data-driven solutions. My expertise lies in backend development, data analysis, and machine learning.
+                    I'm a VFX Pipeline Supervisor and Lead Developer with significant hands-on experience in Python, pipeline design and architecture, and team leadership. With 15 years in the industry, I've worked across various aspects of the VFX pipeline, from rigging and asset management to developing custom tools that enhance artist workflows.
                 </p>
                 <p>
-                    I believe in writing clean, maintainable code and have a deep appreciation for elegant solutions to complex problems. When I'm not coding, you can find me contributing to open-source projects or exploring the latest advancements in AI and machine learning.
+                    I'm passionate about bridging the gap between cutting-edge technology and artistic vision to create seamless production pipelines. I enjoy collaborating with diverse teams, mentoring talent, and cultivating efficient, innovative workflows that empower artists to achieve their best work.
                 </p>
                 <p>
-                    Currently working with FastAPI, Django, PyTorch, and various data science libraries to create impactful applications that solve real-world problems.
+                    Based in Bengaluru, India, I've contributed to numerous high-profile projects for major studios, including Disney productions, and have been recognized with multiple awards for my technical leadership and contributions.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2>Technical Skills</h2>
+            <div class="card">
+                <h3>Core Technologies</h3>
+                <div class="skills-container">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">C++</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">PyQt</span>
+                    <span class="skill-item">OpenUSD</span>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">DCC Applications</h3>
+                <div class="skills-container">
+                    <span class="skill-item">Maya</span>
+                    <span class="skill-item">Nuke</span>
+                    <span class="skill-item">Houdini</span>
+                    <span class="skill-item">Katana</span>
+                    <span class="skill-item">Unreal</span>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Pipeline & Management</h3>
+                <div class="skills-container">
+                    <span class="skill-item">VFX Pipeline Architecture</span>
+                    <span class="skill-item">Asset Management</span>
+                    <span class="skill-item">Project Management</span>
+                    <span class="skill-item">Team Leadership</span>
+                    <span class="skill-item">Agile Methodologies</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="experience-section">
+        <div class="container">
+            <h2>Professional Experience</h2>
+            <div class="card">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">JUNE 2016 — PRESENT</div>
+                        <div class="timeline-title">Lead Developer & RnD Supervisor</div>
+                        <div class="timeline-company">Moving Picture Company (MPC)/Technicolor, Bengaluru</div>
+                        <p>
+                            Leading a team of developers, designing and implementing advanced pipeline solutions. Key achievements include:
+                        </p>
+                        <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                            <li>Led architecture for reimagining legacy pipeline to align with OpenUSD concepts</li>
+                            <li>Halved data footprint for deep EXR files via custom compression plugin</li>
+                            <li>Optimized high-usage legacy tools, significantly reducing infrastructure load</li>
+                            <li>Led Python 2 to Python 3 migration for the studio's pipeline software stack</li>
+                        </ul>
+                        <p>Received multiple awards including Star Performer (2019), Standing Ovation (2021), and Supernova (2022).</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">AUGUST 2012 — JUNE 2016</div>
+                        <div class="timeline-title">Senior Rigging Artist, Project Lead & Pipeline Developer</div>
+                        <div class="timeline-company">Xentrix Studios, Bengaluru</div>
+                        <p>
+                            Developed and maintained pipeline tools for various departments, coordinated closely with department heads. Created automated processes for asset ingestion/export, and served as Assets Lead for Tip the Mouse.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">JANUARY 2012 — AUGUST 2012</div>
+                        <div class="timeline-title">Rigging Artist</div>
+                        <div class="timeline-company">Prana Studios, Mumbai</div>
+                        <p>
+                            Specialized in rigging for Disney projects such as Planes: Fire & Rescue and Tinkerbell, creating robust, animator-friendly rigs.
+                        </p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">JANUARY 2009 — JANUARY 2012</div>
+                        <div class="timeline-title">CG Generalist</div>
+                        <div class="timeline-company">Toolbox Animation Studios, Pune</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -257,52 +399,49 @@
             
             <div class="card project-card">
                 <div class="project-image">
-                    <i class="fas fa-chart-line"></i>
+                    <i class="fas fa-film"></i>
                 </div>
                 <div>
-                    <h3>Data Visualization Dashboard</h3>
-                    <p>A real-time dashboard for visualizing complex datasets using Python, Flask, and D3.js. Features interactive charts and customizable views.</p>
+                    <h3>OpenUSD Pipeline Integration</h3>
+                    <p>Led a team that reimagined our legacy pipeline to align asset management systems with OpenUSD concepts, and integrated the new pipeline into user toolsets.</p>
                     <div class="tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">D3.js</span>
-                        <span class="tag">Pandas</span>
+                        <span class="tag">OpenUSD</span>
+                        <span class="tag">Maya</span>
+                        <span class="tag">Pipeline Architecture</span>
                     </div>
-                    <a href="#" class="btn">View Project</a>
                 </div>
             </div>
             
             <div class="card project-card">
                 <div class="project-image">
-                    <i class="fas fa-robot"></i>
+                    <i class="fas fa-database"></i>
                 </div>
                 <div>
-                    <h3>ML-Powered Content Recommender</h3>
-                    <p>A recommendation system built with Python and scikit-learn that analyzes user preferences to suggest personalized content.</p>
+                    <h3>Deep EXR Compression System</h3>
+                    <p>Developed and integrated a custom plugin for compressing deep data in EXR files, halving the data footprint and significantly speeding up Nuke script processing.</p>
                     <div class="tags">
+                        <span class="tag">C++</span>
                         <span class="tag">Python</span>
-                        <span class="tag">scikit-learn</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Nuke</span>
+                        <span class="tag">Optimization</span>
                     </div>
-                    <a href="#" class="btn">View Project</a>
                 </div>
             </div>
             
             <div class="card project-card">
                 <div class="project-image">
-                    <i class="fas fa-code"></i>
+                    <i class="fas fa-tools"></i>
                 </div>
                 <div>
-                    <h3>Automated Testing Framework</h3>
-                    <p>A comprehensive testing framework for Python applications that automates the process of writing and running tests, improving code quality and development speed.</p>
+                    <h3>Maya-Arnold Render Toolset</h3>
+                    <p>Integrated Maya-Arnold render toolset into the pipeline for layout to create rapid playblasts with prototyped lighting instead of grayscale renders, significantly improving artist workflow.</p>
                     <div class="tags">
                         <span class="tag">Python</span>
-                        <span class="tag">Pytest</span>
-                        <span class="tag">GitHub Actions</span>
-                        <span class="tag">Docker</span>
+                        <span class="tag">Maya</span>
+                        <span class="tag">Arnold</span>
+                        <span class="tag">Rendering</span>
                     </div>
-                    <a href="#" class="btn">View Project</a>
                 </div>
             </div>
         </div>
