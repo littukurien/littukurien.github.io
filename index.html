@@ -60,8 +60,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            text-align: left;
+            align-items: center; /* Center horizontally */
+            text-align: center; /* Center text alignment */
             color: var(--accent-color);
             position: fixed;
             left: 0;
@@ -111,6 +111,7 @@
             flex-direction: column;
             gap: 1rem;
             margin-top: 2rem;
+            align-items: center; /* Center contact links */
         }
 
         .contact a {
@@ -166,7 +167,7 @@
             margin-bottom: 1rem;
         }
 
-        .scroll-prompt {
+        .scroll-controls {
             position: fixed;
             right: 2rem;
             top: 50%;
@@ -174,9 +175,17 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.5rem;
+            gap: 1.5rem;
             color: var(--accent-color);
             z-index: 10;
+        }
+
+        .scroll-prompt {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
         }
 
         .scroll-prompt span {
@@ -193,6 +202,10 @@
             animation: bounce 2s infinite;
         }
 
+        .scroll-up i {
+            animation: bounce-up 2s infinite;
+        }
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% {
                 transform: translateY(0);
@@ -202,6 +215,18 @@
             }
             60% {
                 transform: translateY(-5px);
+            }
+        }
+
+        @keyframes bounce-up {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(10px);
+            }
+            60% {
+                transform: translateY(5px);
             }
         }
 
@@ -260,7 +285,7 @@
                 height: auto;
             }
 
-            .scroll-prompt {
+            .scroll-controls {
                 display: none;
             }
         }
@@ -450,9 +475,15 @@
         </div>
     </div>
 
-    <div class="scroll-prompt">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
+    <div class="scroll-controls">
+        <div class="scroll-prompt scroll-up">
+            <i class="fas fa-chevron-up"></i>
+            <span>Up</span>
+        </div>
+        <div class="scroll-prompt scroll-down">
+            <span>Down</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </div>
 
     <script>
@@ -466,8 +497,8 @@
             blur.style.top = y + 'px';
         });
         
-        // Scroll effect when clicking scroll prompt
-        document.querySelector('.scroll-prompt').addEventListener('click', function() {
+        // Scroll down when clicking down arrow
+        document.querySelector('.scroll-down').addEventListener('click', function() {
             const rightSection = document.querySelector('.right-section');
             const currentScrollPos = rightSection.scrollTop;
             const windowHeight = rightSection.clientHeight;
@@ -475,6 +506,19 @@
             // Scroll down by one viewport height
             rightSection.scrollTo({
                 top: currentScrollPos + windowHeight * 0.8,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Scroll up when clicking up arrow
+        document.querySelector('.scroll-up').addEventListener('click', function() {
+            const rightSection = document.querySelector('.right-section');
+            const currentScrollPos = rightSection.scrollTop;
+            const windowHeight = rightSection.clientHeight;
+            
+            // Scroll up by one viewport height
+            rightSection.scrollTo({
+                top: currentScrollPos - windowHeight * 0.8,
                 behavior: 'smooth'
             });
         });
