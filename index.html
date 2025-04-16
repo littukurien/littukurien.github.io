@@ -54,10 +54,9 @@
         }
 
         .left-section {
-            width: 30%;
-            min-width: 300px;
+            width: 50%;
             height: 100vh;
-            padding: 2rem;
+            padding: 2rem 4rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -70,8 +69,8 @@
         }
 
         .right-section {
-            width: 70%;
-            margin-left: 30%;
+            width: 50%;
+            margin-left: 50%;
             padding: 4rem;
             overflow-y: auto;
             height: 100vh;
@@ -84,9 +83,10 @@
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             color: var(--accent-color);
+            text-transform: uppercase;
         }
 
         h2 {
@@ -137,7 +137,6 @@
             padding: 2rem;
             margin-bottom: 2rem;
             width: 100%;
-            max-width: 800px;
         }
 
         .experience-item {
@@ -167,20 +166,43 @@
             margin-bottom: 1rem;
         }
 
-        .down-arrow {
+        .scroll-prompt {
             position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2rem;
-            cursor: pointer;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
             color: var(--accent-color);
             z-index: 10;
-            transition: transform 0.3s ease;
         }
 
-        .down-arrow:hover {
-            transform: translateX(-50%) translateY(5px);
+        .scroll-prompt span {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .scroll-prompt i {
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
         }
 
         .skills {
@@ -217,7 +239,7 @@
             scroll-margin-top: 2rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 1024px) {
             .container {
                 flex-direction: column;
                 overflow-y: auto;
@@ -228,8 +250,6 @@
                 width: 100%;
                 height: auto;
                 min-height: 100vh;
-                align-items: center;
-                text-align: center;
                 padding: 2rem;
             }
 
@@ -240,9 +260,8 @@
                 height: auto;
             }
 
-            .contact {
-                flex-direction: row;
-                justify-content: center;
+            .scroll-prompt {
+                display: none;
             }
         }
     </style>
@@ -252,7 +271,7 @@
     
     <div class="container">
         <div class="left-section">
-            <h1>Littu Kurien</h1>
+            <h1>LITTU KURIEN</h1>
             <div class="role">R&D Pipeline Supervisor</div>
             <p>15+ years of experience in Python, pipeline design, and team leadership</p>
             <div class="contact">
@@ -431,7 +450,8 @@
         </div>
     </div>
 
-    <div class="down-arrow">
+    <div class="scroll-prompt">
+        <span>Scroll</span>
         <i class="fas fa-chevron-down"></i>
     </div>
 
@@ -446,8 +466,8 @@
             blur.style.top = y + 'px';
         });
         
-        // Scroll effect when clicking down arrow
-        document.querySelector('.down-arrow').addEventListener('click', function() {
+        // Scroll effect when clicking scroll prompt
+        document.querySelector('.scroll-prompt').addEventListener('click', function() {
             const rightSection = document.querySelector('.right-section');
             const currentScrollPos = rightSection.scrollTop;
             const windowHeight = rightSection.clientHeight;
