@@ -30,7 +30,7 @@
             color: var(--text-color);
             line-height: 1.6;
             min-height: 100vh;
-            overflow-x: hidden;
+            overflow: hidden;
             position: relative;
         }
 
@@ -48,31 +48,33 @@
 
         .container {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
             position: relative;
             z-index: 1;
         }
 
-        .left-section, .right-section {
-            flex: 1;
+        .left-section {
+            width: 30%;
+            min-width: 300px;
+            height: 100vh;
             padding: 2rem;
             display: flex;
             flex-direction: column;
-        }
-
-        .left-section {
             justify-content: center;
-            align-items: flex-end;
-            padding-right: 4rem;
-            text-align: right;
+            align-items: flex-start;
+            text-align: left;
             color: var(--accent-color);
+            position: fixed;
+            left: 0;
+            top: 0;
         }
 
         .right-section {
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-left: 4rem;
-            padding-top: 5rem;
+            width: 70%;
+            margin-left: 30%;
+            padding: 4rem;
+            overflow-y: auto;
+            height: 100vh;
         }
 
         h1, h2 {
@@ -106,7 +108,8 @@
 
         .contact {
             display: flex;
-            gap: 1.5rem;
+            flex-direction: column;
+            gap: 1rem;
             margin-top: 2rem;
         }
 
@@ -165,11 +168,19 @@
         }
 
         .down-arrow {
-            position: absolute;
+            position: fixed;
             bottom: 2rem;
             left: 50%;
             transform: translateX(-50%);
             font-size: 2rem;
+            cursor: pointer;
+            color: var(--accent-color);
+            z-index: 10;
+            transition: transform 0.3s ease;
+        }
+
+        .down-arrow:hover {
+            transform: translateX(-50%) translateY(5px);
         }
 
         .skills {
@@ -186,23 +197,52 @@
             font-size: 0.85rem;
         }
 
+        .awards-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .award-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .award-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 2rem;
+        }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
+                overflow-y: auto;
             }
 
-            .left-section, .right-section {
+            .left-section {
+                position: relative;
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
                 align-items: center;
                 text-align: center;
                 padding: 2rem;
             }
 
-            .left-section {
-                padding-bottom: 0;
+            .right-section {
+                width: 100%;
+                margin-left: 0;
+                padding: 2rem;
+                height: auto;
             }
 
-            .right-section {
-                padding-top: 0;
+            .contact {
+                flex-direction: row;
+                justify-content: center;
             }
         }
     </style>
@@ -228,75 +268,165 @@
         </div>
         
         <div class="right-section">
-            <h2>About Me</h2>
-            <div class="card">
-                <p>
-                    I'm a VFX Pipeline Software Supervisor and Lead Developer with extensive hands-on experience in Python, VFX and animation pipeline design, and team leadership.
-                </p>
-                <p>
-                    At Technicolor, I serve as the primary point of contact for pipeline-related requests across departments. I own all projects related to pipeline and asset management systems, providing critical support during high-impact issues while regularly identifying and resolving pipeline bottlenecks.
-                </p>
-                <p>
-                    I apply agile project management principles and break down complex technical challenges into manageable tasks. I collaborate with cross-functional teams to connect technical capabilities with artistic needs, developing production pipelines that effectively serve both requirements.
-                </p>
-                <div class="skills">
-                    <div class="skill-tag">Python</div>
-                    <div class="skill-tag">Computer Graphics</div>
-                    <div class="skill-tag">OpenUSD</div>
-                    <div class="skill-tag">Pipeline Design</div>
-                    <div class="skill-tag">Team Leadership</div>
-                </div>
-            </div>
-            
-            <h2>Experience</h2>
-            <div class="card">
-                <div class="experience-item">
-                    <div class="company">Technicolor Group</div>
-                    <div class="job-title">Pipeline Software Supervisor</div>
-                    <div class="date">January 2023 - Present</div>
-                    <div class="responsibilities">
-                        <ul>
-                            <li>Lead design and implementation of MPC's VFX pipeline across multiple development and creative teams</li>
-                            <li>Own and maintain pipeline code repositories and facilitate agile development processes</li>
-                            <li>Manage pipeline developers; breaking down complex challenges into actionable tasks</li>
-                            <li>Serve as primary escalation point for supervisors to resolve complex pipeline challenges</li>
-                            <li>Provide technical leadership for in-house Asset Management System (AMS)</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="company">Moving Picture Company</div>
-                    <div class="job-title">Lead Pipeline Developer</div>
-                    <div class="date">June 2019 - January 2023</div>
-                    <div class="responsibilities">
-                        <ul>
-                            <li>Owned all pipeline related repositories; maintained code quality via reviews and test-driven development</li>
-                            <li>Improved speed for legacy texturing workflows, reducing cross-site data syncing requirements</li>
-                            <li>Owned the in-house asset management system and created APIs for other developers</li>
-                            <li>Led Python 2 to Python 3 migration for the studio's pipeline software stack</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="company">Moving Picture Company</div>
-                    <div class="job-title">Pipeline Developer</div>
-                    <div class="date">June 2016 - May 2019</div>
-                    <div class="responsibilities">
-                        <ul>
-                            <li>Part of a 3-member dedicated team for The Lion King, supporting toolsets for artists and supervisors</li>
-                            <li>Integrated compression method for deep EXRs that reduced data footprint by half</li>
-                            <li>Refactored and rewrote high-impact legacy tools for stability and reliability</li>
-                        </ul>
+            <div id="about" class="section">
+                <h2>About Me</h2>
+                <div class="card">
+                    <p>
+                        I'm a VFX Pipeline Software Supervisor and Lead Developer with extensive hands-on experience in Python, VFX and animation pipeline design, and team leadership.
+                    </p>
+                    <p>
+                        At Technicolor, I serve as the primary point of contact for pipeline-related requests across departments. I own all projects related to pipeline and asset management systems, providing critical support during high-impact issues while regularly identifying and resolving pipeline bottlenecks.
+                    </p>
+                    <p>
+                        I apply agile project management principles and break down complex technical challenges into manageable tasks. I collaborate with cross-functional teams to connect technical capabilities with artistic needs, developing production pipelines that effectively serve both requirements.
+                    </p>
+                    <div class="skills">
+                        <div class="skill-tag">Python</div>
+                        <div class="skill-tag">Computer Graphics</div>
+                        <div class="skill-tag">OpenUSD</div>
+                        <div class="skill-tag">Pipeline Design</div>
+                        <div class="skill-tag">Team Leadership</div>
                     </div>
                 </div>
             </div>
             
-            <h2>Education</h2>
-            <div class="card">
-                <p><strong>Film and Television Institute of India, Pune</strong> - Animation (2006-2008)</p>
-                <p><strong>Fergusson College</strong> - Bachelor of Science, Computer Science (2003-2006)</p>
+            <div id="awards" class="section">
+                <h2>Awards</h2>
+                <div class="card">
+                    <div class="awards-item">
+                        <div class="award-title">Supernova</div>
+                        <div class="award-date">June 2022</div>
+                        <p>Peer-voted award across global business units for contribution to the larger software group and its projects</p>
+                    </div>
+                    <div class="awards-item">
+                        <div class="award-title">Standing Ovation</div>
+                        <div class="award-date">September 2021</div>
+                        <p>For consistent good performance over a period of time</p>
+                    </div>
+                    <div class="awards-item">
+                        <div class="award-title">Star Performer</div>
+                        <div class="award-date">January 2019</div>
+                        <p>For outstanding achievement on the project</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="experience" class="section">
+                <h2>Experience</h2>
+                <div class="card">
+                    <div class="experience-item">
+                        <div class="company">Technicolor Group</div>
+                        <div class="job-title">Pipeline Software Supervisor</div>
+                        <div class="date">January 2023 - Present</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Lead design and implementation of MPC's VFX pipeline across multiple development and creative teams</li>
+                                <li>Own and maintain pipeline code repositories and facilitate agile development processes</li>
+                                <li>Manage pipeline developers; breaking down complex challenges into actionable tasks</li>
+                                <li>Serve as primary escalation point for supervisors to resolve complex pipeline challenges</li>
+                                <li>Provide technical leadership for in-house Asset Management System (AMS)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Moving Picture Company</div>
+                        <div class="job-title">Lead Pipeline Developer</div>
+                        <div class="date">June 2019 - January 2023</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Owned all pipeline related repositories; maintained code quality via reviews and test-driven development</li>
+                                <li>Improved speed for legacy texturing workflows, reducing cross-site data syncing requirements</li>
+                                <li>Owned the in-house asset management system and created APIs for other developers</li>
+                                <li>Led Python 2 to Python 3 migration for the studio's pipeline software stack</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Moving Picture Company</div>
+                        <div class="job-title">Pipeline Developer</div>
+                        <div class="date">June 2016 - May 2019</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Part of a 3-member dedicated team for The Lion King, supporting toolsets for artists and supervisors</li>
+                                <li>Integrated compression method for deep EXRs that reduced data footprint by half</li>
+                                <li>Refactored and rewrote high-impact legacy tools for stability and reliability</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Xentrix Studios</div>
+                        <div class="job-title">Pipeline Developer</div>
+                        <div class="date">August 2014 - June 2016</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Developed and maintained tools for the studio's pipeline</li>
+                                <li>Ensured efficient asset ingestion and export processes from various clients</li>
+                                <li>Collaborated with department heads to plan and execute pipeline development projects</li>
+                                <li>Provided critical technical support to the production teams</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Xentrix Studios</div>
+                        <div class="job-title">Rigging Team Lead</div>
+                        <div class="date">August 2013 - August 2014</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Established processes and workflows, and wrote automation scripts for the rigging team</li>
+                                <li>Led the rigging team for multiple shows, ensuring efficient production and high-quality output</li>
+                                <li>Collaborated with cross-functional teams, especially the animation team to optimize rigging workflows</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Xentrix Studios</div>
+                        <div class="job-title">Rigging Artist</div>
+                        <div class="date">August 2012 - August 2013</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Setup Character rigs and developed aesthetically pleasing deformations for the Beware the Batman animated TV show</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">Prana Studio</div>
+                        <div class="job-title">Rigging Artist</div>
+                        <div class="date">January 2012 - August 2012</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Worked as Rigging artist on Disney projects such as Planes: Fire and Rescue and Tinkerbell</li>
+                                <li>Responsible for creating animator friendly and expressive character and dynamics setups</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="company">ToolBox Animation Studios</div>
+                        <div class="job-title">Rigging Artist</div>
+                        <div class="date">December 2008 - 2011</div>
+                        <div class="responsibilities">
+                            <ul>
+                                <li>Worked as CG Generalist specializing in rigging</li>
+                                <li>Did rigging, UV layout, texturing, rendering for various digital assets for TV commercials and films</li>
+                                <li>Created scripts using MEL and Python for rigging automation and data exchange between software</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="education" class="section">
+                <h2>Education</h2>
+                <div class="card">
+                    <p><strong>Film and Television Institute of India, Pune</strong> - Animation (2006-2008)</p>
+                    <p><strong>Fergusson College</strong> - Bachelor of Science, Computer Science (2003-2006)</p>
+                </div>
             </div>
         </div>
     </div>
@@ -306,6 +436,7 @@
     </div>
 
     <script>
+        // Radial blur effect
         document.addEventListener('mousemove', function(e) {
             const blur = document.querySelector('.radial-blur');
             const x = e.clientX;
@@ -313,6 +444,19 @@
             
             blur.style.left = x + 'px';
             blur.style.top = y + 'px';
+        });
+        
+        // Scroll effect when clicking down arrow
+        document.querySelector('.down-arrow').addEventListener('click', function() {
+            const rightSection = document.querySelector('.right-section');
+            const currentScrollPos = rightSection.scrollTop;
+            const windowHeight = rightSection.clientHeight;
+            
+            // Scroll down by one viewport height
+            rightSection.scrollTo({
+                top: currentScrollPos + windowHeight * 0.8,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
