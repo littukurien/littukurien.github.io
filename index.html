@@ -13,6 +13,7 @@
             --bg-color: #ffece4;
             --text-color: #333;
             --accent-color: rgba(242, 63, 10, 0.8); /* #f23f0a with 80% opacity */
+            --name-color: rgba(242, 63, 10, 0.6); /* 20% more transparent for name */
             --secondary-color: rgba(242, 63, 10, 0.2); /* Lighter version for backgrounds */
             --card-bg: #ffffff;
             --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -60,12 +61,18 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center horizontally */
-            text-align: center; /* Center text alignment */
+            align-items: center; /* Center the group horizontally */
             color: var(--accent-color);
             position: fixed;
             left: 0;
             top: 0;
+        }
+
+        .left-content {
+            /* Content container inside left section */
+            text-align: left; /* Left align the text inside */
+            width: 100%; /* Take the full width of the parent */
+            max-width: 500px; /* Limit width for better readability */
         }
 
         .right-section {
@@ -83,9 +90,9 @@
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 4rem; /* Increased by 5 points (roughly) */
             margin-bottom: 1rem;
-            color: var(--accent-color);
+            color: var(--name-color); /* More transparent color for name */
             text-transform: uppercase;
         }
 
@@ -111,7 +118,7 @@
             flex-direction: column;
             gap: 1rem;
             margin-top: 2rem;
-            align-items: center; /* Center contact links */
+            align-items: flex-start; /* Left align contact links */
         }
 
         .contact a {
@@ -264,18 +271,25 @@
             scroll-margin-top: 2rem;
         }
 
+        /* Mobile view improvements */
         @media (max-width: 1024px) {
+            body {
+                overflow: auto; /* Allow scrolling on body */
+            }
+            
             .container {
                 flex-direction: column;
-                overflow-y: auto;
+                overflow-y: visible; /* Allow overflow */
+                height: auto;
             }
 
             .left-section {
-                position: relative;
+                position: relative; /* Not fixed position on mobile */
                 width: 100%;
                 height: auto;
                 min-height: 100vh;
                 padding: 2rem;
+                overflow: visible;
             }
 
             .right-section {
@@ -283,10 +297,15 @@
                 margin-left: 0;
                 padding: 2rem;
                 height: auto;
+                overflow: visible;
             }
 
             .scroll-controls {
                 display: none;
+            }
+            
+            h1 {
+                font-size: 3.5rem; /* Slightly smaller on mobile */
             }
         }
     </style>
@@ -296,18 +315,20 @@
     
     <div class="container">
         <div class="left-section">
-            <h1>LITTU KURIEN</h1>
-            <div class="role">R&D Pipeline Supervisor</div>
-            <p>15+ years of experience in Python, pipeline design, and team leadership</p>
-            <div class="contact">
-                <a href="https://www.linkedin.com/in/littukurien/" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="mailto:littu.kurien@gmail.com">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email</span>
-                </a>
+            <div class="left-content">
+                <h1>LITTU KURIEN</h1>
+                <div class="role">R&D Pipeline Supervisor</div>
+                <p>15+ years of experience in Python, pipeline design, and team leadership</p>
+                <div class="contact">
+                    <a href="https://www.linkedin.com/in/littukurien/" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="mailto:littu.kurien@gmail.com">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
             </div>
         </div>
         
