@@ -386,6 +386,7 @@ p {
     color: var(--accent-color);
 }
 
+/* base grey */
 .left-section h1,
 .left-section .role,
 .left-section p,
@@ -394,11 +395,11 @@ p {
   transition: color 0.3s ease;
 }
 
-/* on hover, restore accent color */
-.left-section:hover h1,
-.left-section:hover .role,
-.left-section:hover p,
-.left-section:hover .contact a {
+/* only turn orange when you hover *directly* on each text element */
+.left-section h1:hover,
+.left-section .role:hover,
+.left-section p:hover,
+.left-section .contact a:hover {
   color: var(--accent-color);
 }
 
