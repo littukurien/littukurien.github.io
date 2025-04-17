@@ -224,7 +224,7 @@ p {
     left: 40%;
     right: auto; /* Positioned closer to the right edge */
     top: 50%;
-    transform: translateY(-50%, -50%);
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     align-items: center;
