@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #ffece4;
+    --text-color: #333;
+    --accent-color: rgba(242, 63, 10, 0.8);
+    --name-color: rgba(242, 63, 10, 0.6);
+    --secondary-color: rgba(242, 63, 10, 0.2);
+    --card-bg: #fff;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'JetBrains Mono', monospace; background: var(--bg-color); color: var(--text-color); line-height: 1.6; min-height: 100vh; }
+
+.radial-blur { /* same styles */ }
+.container { display: flex; height: 100vh; position: relative; }
+.left-section { /* ... */ }
+.center-section { /* ... */ }
+/* ... copy all your CSS rules here, organized by section ... */
+
+@media (max-width: 1024px) {
+    /* mobile tweaks */
+}
