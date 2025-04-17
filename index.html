@@ -75,8 +75,7 @@
             padding: 4rem;
             overflow-y: auto;
             height: 100vh;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent-color) var(--bg-color);
+            /* Removed scrollbar styling */
         }
 
         .right-section {
@@ -91,20 +90,7 @@
             top: 0;
         }
 
-        /* Custom scrollbar */
-        .center-section::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .center-section::-webkit-scrollbar-track {
-            background: var(--bg-color);
-        }
-
-        .center-section::-webkit-scrollbar-thumb {
-            background-color: var(--accent-color);
-            border-radius: 20px;
-            border: 2px solid var(--bg-color);
-        }
+        /* Removed custom scrollbar styling */
 
         .left-content {
             /* Content container inside left section */
@@ -488,10 +474,10 @@
         <div class="scroll-controls">
             <div class="scroll-prompt scroll-up">
                 <i class="fas fa-chevron-up"></i>
-                <span>Scroll Up</span>
+                <span>Up</span>
             </div>
             <div class="scroll-prompt scroll-down">
-                <span>Scroll Down</span>
+                <span>Down</span>
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
