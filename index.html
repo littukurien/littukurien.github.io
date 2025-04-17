@@ -75,7 +75,14 @@
             padding: 4rem;
             overflow-y: auto;
             height: 100vh;
-            /* Removed scrollbar styling */
+            /* Hide scrollbar for all browsers */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .center-section::-webkit-scrollbar {
+            display: none;
         }
 
         .right-section {
@@ -89,8 +96,6 @@
             right: 0;
             top: 0;
         }
-
-        /* Removed custom scrollbar styling */
 
         .left-content {
             /* Content container inside left section */
