@@ -89,7 +89,7 @@ h1, h2 {
 
 h1 {
     font-family: 'Oswald', sans-serif;
-    font-size: 4rem;
+    font-size: 6rem;
     margin-bottom: 1rem;
     color: var(--name-color);
     text-transform: uppercase;
@@ -384,6 +384,22 @@ p {
 .interactive-word:hover {
     font-weight: bold;
     color: var(--accent-color);
+}
+
+.left-section h1,
+.left-section .role,
+.left-section p,
+.left-section .contact a {
+  color: #737373;
+  transition: color 0.3s ease;
+}
+
+/* on hover, restore accent color */
+.left-section:hover h1,
+.left-section:hover .role,
+.left-section:hover p,
+.left-section:hover .contact a {
+  color: var(--accent-color);
 }
 
 /* Mobile view improvements */
