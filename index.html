@@ -8,6 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/gotham">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap">
     <style>
         :root {
             --bg-color: #ffece4;
@@ -55,17 +56,54 @@
         }
 
         .left-section {
-            width: 50%;
+            width: 25%;
             height: 100vh;
-            padding: 2rem 4rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center the group horizontally */
+            align-items: center;
             color: var(--accent-color);
             position: fixed;
             left: 0;
             top: 0;
+        }
+
+        .center-section {
+            width: 50%;
+            margin-left: 25%;
+            padding: 4rem;
+            overflow-y: auto;
+            height: 100vh;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-color) var(--bg-color);
+        }
+
+        .right-section {
+            width: 25%;
+            height: 100vh;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            right: 0;
+            top: 0;
+        }
+
+        /* Custom scrollbar */
+        .center-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .center-section::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        .center-section::-webkit-scrollbar-thumb {
+            background-color: var(--accent-color);
+            border-radius: 20px;
+            border: 2px solid var(--bg-color);
         }
 
         .left-content {
@@ -75,14 +113,6 @@
             max-width: 500px; /* Limit width for better readability */
         }
 
-        .right-section {
-            width: 50%;
-            margin-left: 50%;
-            padding: 4rem;
-            overflow-y: auto;
-            height: 100vh;
-        }
-
         h1, h2 {
             font-family: 'Gotham', sans-serif;
             font-weight: 700;
@@ -90,10 +120,12 @@
         }
 
         h1 {
-            font-size: 4rem; /* Increased by 5 points (roughly) */
+            font-family: 'Oswald', sans-serif;
+            font-size: 4rem;
             margin-bottom: 1rem;
-            color: var(--name-color); /* More transparent color for name */
+            color: var(--name-color);
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         h2 {
@@ -140,15 +172,60 @@
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid #ccc;
+            border: 1px solid rgba(0,0,0,0.1);
             border-radius: 8px;
             padding: 2rem;
             margin-bottom: 2rem;
             width: 100%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        /* About Me card - reduced padding to minimize empty space */
+        #about .card {
+            padding: 1.5rem;
+        }
+
+        #about .card p {
+            margin-bottom: 0.8rem;
         }
 
         .experience-item {
             margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            top: 6px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
         }
 
         .company {
@@ -176,7 +253,7 @@
 
         .scroll-controls {
             position: fixed;
-            right: 2rem;
+            right: 28%; /* Positioned to be more to the right side of the center */
             top: 50%;
             transform: translateY(-50%);
             display: flex;
@@ -271,6 +348,75 @@
             scroll-margin-top: 2rem;
         }
 
+        /* Tech skills section */
+        .tech-skills-section {
+            margin-bottom: 4rem;
+        }
+
+        .skills-category {
+            margin-bottom: 2rem;
+        }
+
+        .skills-category h3 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        /* Featured projects */
+        .project-card {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-icon {
+            flex: 0 0 100px;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--accent-color);
+        }
+
+        .project-content {
+            flex: 1;
+        }
+
+        .project-title {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        /* Interactive elements */
+        .interactive-word {
+            font-weight: normal;
+            transition: font-weight 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .interactive-word:hover {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
         /* Mobile view improvements */
         @media (max-width: 1024px) {
             body {
@@ -292,12 +438,19 @@
                 overflow: visible;
             }
 
-            .right-section {
+            .center-section {
                 width: 100%;
                 margin-left: 0;
                 padding: 2rem;
                 height: auto;
                 overflow: visible;
+            }
+
+            .right-section {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 2rem;
             }
 
             .scroll-controls {
@@ -318,7 +471,7 @@
             <div class="left-content">
                 <h1>LITTU KURIEN</h1>
                 <div class="role">R&D Pipeline Supervisor</div>
-                <p>15+ years of experience in Python, pipeline design, and team leadership</p>
+                <p>15+ years of experience in <span class="interactive-word" data-section="technical-skills">software development</span> in Python, VFX Pipeline design, and leadership for <span class="interactive-word" data-section="experience">development teams</span>.</p>
                 <div class="contact">
                     <a href="https://www.linkedin.com/in/littukurien/" target="_blank">
                         <i class="fab fa-linkedin"></i>
@@ -332,7 +485,18 @@
             </div>
         </div>
         
-        <div class="right-section">
+        <div class="scroll-controls">
+            <div class="scroll-prompt scroll-up">
+                <i class="fas fa-chevron-up"></i>
+                <span>Scroll Up</span>
+            </div>
+            <div class="scroll-prompt scroll-down">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        
+        <div class="center-section">
             <div id="about" class="section">
                 <h2>About Me</h2>
                 <div class="card">
@@ -351,6 +515,97 @@
                         <div class="skill-tag">OpenUSD</div>
                         <div class="skill-tag">Pipeline Design</div>
                         <div class="skill-tag">Team Leadership</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="featured-projects" class="section">
+                <h2>Featured Projects</h2>
+                <div class="card">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">OpenUSD Pipeline Integration</div>
+                            <p>Led a team that reimagined our legacy pipeline to align asset management systems with OpenUSD concepts, and integrated the new pipeline into user toolsets.</p>
+                            <div class="project-tags">
+                                <div class="skill-tag">Python</div>
+                                <div class="skill-tag">OpenUSD</div>
+                                <div class="skill-tag">Maya</div>
+                                <div class="skill-tag">Pipeline Architecture</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Deep EXR Compression System</div>
+                            <p>Developed and integrated a custom plugin for compressing deep data in EXR files, halving the data footprint and significantly speeding up Nuke script processing.</p>
+                            <div class="project-tags">
+                                <div class="skill-tag">C++</div>
+                                <div class="skill-tag">Python</div>
+                                <div class="skill-tag">Nuke</div>
+                                <div class="skill-tag">Optimization</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-title">Maya-Arnold Render Toolset</div>
+                            <p>Integrated Maya-Arnold render toolset into the pipeline for layout to create rapid playblasts with prototyped lighting instead of grayscale renders, significantly improving artist workflow.</p>
+                            <div class="project-tags">
+                                <div class="skill-tag">Python</div>
+                                <div class="skill-tag">Maya</div>
+                                <div class="skill-tag">Arnold</div>
+                                <div class="skill-tag">Rendering</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="technical-skills" class="section tech-skills-section">
+                <h2>Technical Skills</h2>
+                <div class="card">
+                    <div class="skills-category">
+                        <h3>Core Technologies</h3>
+                        <div class="skills-grid">
+                            <div class="skill-tag">Python</div>
+                            <div class="skill-tag">C++</div>
+                            <div class="skill-tag">SQL</div>
+                            <div class="skill-tag">PyQt</div>
+                            <div class="skill-tag">OpenUSD</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>DCC Applications</h3>
+                        <div class="skills-grid">
+                            <div class="skill-tag">Maya</div>
+                            <div class="skill-tag">Nuke</div>
+                            <div class="skill-tag">Houdini</div>
+                            <div class="skill-tag">Katana</div>
+                            <div class="skill-tag">Unreal</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3>Pipeline & Management</h3>
+                        <div class="skills-grid">
+                            <div class="skill-tag">VFX Pipeline Architecture</div>
+                            <div class="skill-tag">Asset Management</div>
+                            <div class="skill-tag">Project Management</div>
+                            <div class="skill-tag">Team Leadership</div>
+                            <div class="skill-tag">Agile Methodologies</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -379,108 +634,120 @@
             <div id="experience" class="section">
                 <h2>Experience</h2>
                 <div class="card">
-                    <div class="experience-item">
-                        <div class="company">Technicolor Group</div>
-                        <div class="job-title">Pipeline Software Supervisor</div>
-                        <div class="date">January 2023 - Present</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Lead design and implementation of MPC's VFX pipeline across multiple development and creative teams</li>
-                                <li>Own and maintain pipeline code repositories and facilitate agile development processes</li>
-                                <li>Manage pipeline developers; breaking down complex challenges into actionable tasks</li>
-                                <li>Serve as primary escalation point for supervisors to resolve complex pipeline challenges</li>
-                                <li>Provide technical leadership for in-house Asset Management System (AMS)</li>
-                            </ul>
+                    <div class="timeline-container">
+                        <div class="timeline-line"></div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Technicolor Group</div>
+                            <div class="job-title">Pipeline Software Supervisor</div>
+                            <div class="date">January 2023 - Present</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Lead design and implementation of MPC's VFX pipeline across multiple development and creative teams</li>
+                                    <li>Own and maintain pipeline code repositories and facilitate agile development processes</li>
+                                    <li>Manage pipeline developers; breaking down complex challenges into actionable tasks</li>
+                                    <li>Serve as primary escalation point for supervisors to resolve complex pipeline challenges</li>
+                                    <li>Provide technical leadership for in-house Asset Management System (AMS)</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Moving Picture Company</div>
-                        <div class="job-title">Lead Pipeline Developer</div>
-                        <div class="date">June 2019 - January 2023</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Owned all pipeline related repositories; maintained code quality via reviews and test-driven development</li>
-                                <li>Improved speed for legacy texturing workflows, reducing cross-site data syncing requirements</li>
-                                <li>Owned the in-house asset management system and created APIs for other developers</li>
-                                <li>Led Python 2 to Python 3 migration for the studio's pipeline software stack</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Moving Picture Company</div>
+                            <div class="job-title">Lead Pipeline Developer</div>
+                            <div class="date">June 2019 - January 2023</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Owned all pipeline related repositories; maintained code quality via reviews and test-driven development</li>
+                                    <li>Improved speed for legacy texturing workflows, reducing cross-site data syncing requirements</li>
+                                    <li>Owned the in-house asset management system and created APIs for other developers</li>
+                                    <li>Led Python 2 to Python 3 migration for the studio's pipeline software stack</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Moving Picture Company</div>
-                        <div class="job-title">Pipeline Developer</div>
-                        <div class="date">June 2016 - May 2019</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Part of a 3-member dedicated team for The Lion King, supporting toolsets for artists and supervisors</li>
-                                <li>Integrated compression method for deep EXRs that reduced data footprint by half</li>
-                                <li>Refactored and rewrote high-impact legacy tools for stability and reliability</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Moving Picture Company</div>
+                            <div class="job-title">Pipeline Developer</div>
+                            <div class="date">June 2016 - May 2019</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Part of a 3-member dedicated team for The Lion King, supporting toolsets for artists and supervisors</li>
+                                    <li>Integrated compression method for deep EXRs that reduced data footprint by half</li>
+                                    <li>Refactored and rewrote high-impact legacy tools for stability and reliability</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Xentrix Studios</div>
-                        <div class="job-title">Pipeline Developer</div>
-                        <div class="date">August 2014 - June 2016</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Developed and maintained tools for the studio's pipeline</li>
-                                <li>Ensured efficient asset ingestion and export processes from various clients</li>
-                                <li>Collaborated with department heads to plan and execute pipeline development projects</li>
-                                <li>Provided critical technical support to the production teams</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Xentrix Studios</div>
+                            <div class="job-title">Pipeline Developer</div>
+                            <div class="date">August 2014 - June 2016</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Developed and maintained tools for the studio's pipeline</li>
+                                    <li>Ensured efficient asset ingestion and export processes from various clients</li>
+                                    <li>Collaborated with department heads to plan and execute pipeline development projects</li>
+                                    <li>Provided critical technical support to the production teams</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Xentrix Studios</div>
-                        <div class="job-title">Rigging Team Lead</div>
-                        <div class="date">August 2013 - August 2014</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Established processes and workflows, and wrote automation scripts for the rigging team</li>
-                                <li>Led the rigging team for multiple shows, ensuring efficient production and high-quality output</li>
-                                <li>Collaborated with cross-functional teams, especially the animation team to optimize rigging workflows</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Xentrix Studios</div>
+                            <div class="job-title">Rigging Team Lead</div>
+                            <div class="date">August 2013 - August 2014</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Established processes and workflows, and wrote automation scripts for the rigging team</li>
+                                    <li>Led the rigging team for multiple shows, ensuring efficient production and high-quality output</li>
+                                    <li>Collaborated with cross-functional teams, especially the animation team to optimize rigging workflows</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Xentrix Studios</div>
-                        <div class="job-title">Rigging Artist</div>
-                        <div class="date">August 2012 - August 2013</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Setup Character rigs and developed aesthetically pleasing deformations for the Beware the Batman animated TV show</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Xentrix Studios</div>
+                            <div class="job-title">Rigging Artist</div>
+                            <div class="date">August 2012 - August 2013</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Setup Character rigs and developed aesthetically pleasing deformations for the Beware the Batman animated TV show</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">Prana Studio</div>
-                        <div class="job-title">Rigging Artist</div>
-                        <div class="date">January 2012 - August 2012</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Worked as Rigging artist on Disney projects such as Planes: Fire and Rescue and Tinkerbell</li>
-                                <li>Responsible for creating animator friendly and expressive character and dynamics setups</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">Prana Studio</div>
+                            <div class="job-title">Rigging Artist</div>
+                            <div class="date">January 2012 - August 2012</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Worked as Rigging artist on Disney projects such as Planes: Fire and Rescue and Tinkerbell</li>
+                                    <li>Responsible for creating animator friendly and expressive character and dynamics setups</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="company">ToolBox Animation Studios</div>
-                        <div class="job-title">Rigging Artist</div>
-                        <div class="date">December 2008 - 2011</div>
-                        <div class="responsibilities">
-                            <ul>
-                                <li>Worked as CG Generalist specializing in rigging</li>
-                                <li>Did rigging, UV layout, texturing, rendering for various digital assets for TV commercials and films</li>
-                                <li>Created scripts using MEL and Python for rigging automation and data exchange between software</li>
-                            </ul>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="company">ToolBox Animation Studios</div>
+                            <div class="job-title">Rigging Artist</div>
+                            <div class="date">December 2008 - 2011</div>
+                            <div class="responsibilities">
+                                <ul>
+                                    <li>Worked as CG Generalist specializing in rigging</li>
+                                    <li>Did rigging, UV layout, texturing, rendering for various digital assets for TV commercials and films</li>
+                                    <li>Created scripts using MEL and Python for rigging automation and data exchange between software</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -494,16 +761,9 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="scroll-controls">
-        <div class="scroll-prompt scroll-up">
-            <i class="fas fa-chevron-up"></i>
-            <span>Up</span>
-        </div>
-        <div class="scroll-prompt scroll-down">
-            <span>Down</span>
-            <i class="fas fa-chevron-down"></i>
+        
+        <div class="right-section">
+            <!-- This section is intentionally left empty to create the three-column layout -->
         </div>
     </div>
 
@@ -518,31 +778,48 @@
             blur.style.top = y + 'px';
         });
         
-        // Scroll down when clicking down arrow
-        document.querySelector('.scroll-down').addEventListener('click', function() {
-            const rightSection = document.querySelector('.right-section');
-            const currentScrollPos = rightSection.scrollTop;
-            const windowHeight = rightSection.clientHeight;
+        // Interactive words highlight and scroll
+        document.querySelectorAll('.interactive-word').forEach(word => {
+            word.addEventListener('mouseenter', function() {
+                this.style.fontWeight = 'bold';
+            });
             
-            // Scroll down by one viewport height
-            rightSection.scrollTo({
-                top: currentScrollPos + windowHeight * 0.8,
+            word.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('active')) {
+                    this.style.fontWeight = 'normal';
+                }
+            });
+            
+            word.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        // Scroll controls functionality
+        const centerSection = document.querySelector('.center-section');
+        
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            centerSection.scrollBy({
+                top: window.innerHeight / 2,
                 behavior: 'smooth'
             });
         });
         
-        // Scroll up when clicking up arrow
         document.querySelector('.scroll-up').addEventListener('click', function() {
-            const rightSection = document.querySelector('.right-section');
-            const currentScrollPos = rightSection.scrollTop;
-            const windowHeight = rightSection.clientHeight;
-            
-            // Scroll up by one viewport height
-            rightSection.scrollTo({
-                top: currentScrollPos - windowHeight * 0.8,
+            centerSection.scrollBy({
+                top: -window.innerHeight / 2,
                 behavior: 'smooth'
             });
         });
+        
+        // Make scroll visible on mobile
+        if (window.innerWidth <= 1024) {
+            document.querySelector('.center-section').style.overflowY = 'visible';
+        }
     </script>
 </body>
 </html>
