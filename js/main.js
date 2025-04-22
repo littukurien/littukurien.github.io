@@ -4,10 +4,10 @@ import { initScrollControls } from './scrollControls.js';
 
 const sections = [
   'about',
-  'featured-projects',
   'technical-skills',
   'awards',
   'experience',
+  'featured-projects',
   'education'
 ];
 

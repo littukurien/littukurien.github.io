@@ -426,6 +426,38 @@ p {
   color: var(--accent-color);
 }
 
+/* Education Timeline Styles */
+.education-item {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.education-item .timeline-dot {
+    background-color: var(--accent-color);
+}
+
+.education-item .institution {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: var(--accent-color);
+}
+
+.education-item .degree {
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.education-item .date {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.75rem;
+}
+
+.education-item .description {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
 
 /* Mobile view improvements */
 @media (max-width: 1024px) {

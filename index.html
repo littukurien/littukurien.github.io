@@ -78,6 +78,21 @@
       85% { opacity: 1; }
       100% { opacity: 0; }
     }
+
+    /* Disable email copy functionality on mobile */
+    @media (max-width: 768px) {
+      .email-text {
+        cursor: default;
+      }
+      
+      .email-text[data-tooltip]::before {
+        display: none;
+      }
+      
+      .copy-success {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
