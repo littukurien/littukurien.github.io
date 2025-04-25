@@ -436,14 +436,14 @@ p {
     background-color: var(--accent-color);
 }
 
-.education-item .institution {
+.education-item .degree {
     font-weight: bold;
     font-size: 1.1rem;
     margin-bottom: 0.25rem;
     color: var(--accent-color);
 }
 
-.education-item .degree {
+.education-item .institution {
     font-style: italic;
     margin-bottom: 0.5rem;
 }
