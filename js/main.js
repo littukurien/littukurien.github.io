@@ -7,7 +7,7 @@ const sections = [
   'technical-skills',
   'awards',
   'experience',
-  'featured-projects',
+//  'featured-projects',
   'education'
 ];
 
